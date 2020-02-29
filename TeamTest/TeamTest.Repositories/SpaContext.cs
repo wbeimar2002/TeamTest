@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
-using TeamTest.Models.Entities;
-
-namespace TeamTest.Repositories
+﻿namespace TeamTest.Repositories
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using Microsoft.EntityFrameworkCore;
+    using TeamTest.Models.Entities;
+
     class SpaContext : DbContext
     {
         // cd TeamTest.Repositories
