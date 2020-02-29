@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TeamTest.Models\TeamTest.Models.csproj" />
+    <ProjectReference Include="..\TeamTest.Repositories\TeamTest.Repositories.csproj" />
+  </ItemGroup>
+
 </Project>

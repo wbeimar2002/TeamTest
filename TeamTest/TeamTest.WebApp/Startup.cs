@@ -11,6 +11,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using TeamTest.Models.Entities;
+using TeamTest.Repositories.Repositories;
+using TeamTest.Services.Interfaces;
+using TeamTest.Services.Spa;
 
 namespace TeamTest.WebApp
 {
@@ -27,6 +31,8 @@ namespace TeamTest.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddTransient<IClientService, ClientService>();
+            services.AddTransient<ISpaRepository<Client>, SpaRepository<Client>>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
