@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +21,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TeamTest.Models\TeamTest.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TeamSpa.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -37,6 +37,6 @@ namespace TeamTest.Models.Entities
         /// <summary>
         /// Product Categories
         /// </summary>
-        public ICollection<Category> Categories { get; set; }
+        public virtual ICollection<ProductsCategories> ProductsCategories { get; set; }
     }
 }
