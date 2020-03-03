@@ -36,7 +36,7 @@
         }
 
         [HttpDelete]
-        public bool Delete([FromBody] int clientId)
+        public bool Delete(int clientId)
         {
             var result = _clientService.Remove(clientId);
             return result;

@@ -16,6 +16,9 @@ namespace TeamTest.WebApi
             CreateMap<Client, ClientDto>();
             CreateMap<ClientDto, Client>();
             CreateMap<ClientPayload, Client>();
+            CreateMap<Category, CategoryDto>();
+            CreateMap<CategoryDto, Category>();
+            CreateMap<CategoryPayload, Category>();
         }
     }
 }

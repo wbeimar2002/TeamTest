@@ -28,26 +28,33 @@ namespace TeamTest.Services.Spa
 
         public UserDto Authenticate(UserPayload userPayload)
         {
-            var user = this.GetUser(userPayload);
-
-            if (user == null)
-                return null;
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.SecureKey);
-            var tokenDescriptor = new SecurityTokenDescriptor
+            try
             {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddMinutes(30),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            user.Token = tokenHandler.WriteToken(token);
+                var user = this.GetUser(userPayload);
 
-            return user.WithoutPassword();
+                if (user == null)
+                    return null;
+
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.ASCII.GetBytes(_appSettings.SecureKey);
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                    {
+                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                    }),
+                    Expires = DateTime.UtcNow.AddMinutes(30),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                };
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+                user.Token = tokenHandler.WriteToken(token);
+
+                return user.WithoutPassword();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private UserDto GetUser(UserPayload userPayload)
@@ -65,12 +72,5 @@ namespace TeamTest.Services.Spa
                 LastName = user.LastName
             };
         }
-
-
-        public bool IsValidUser(UserPayload userPayload)
-        {
-            return _userRepository.List().Any(x => x.Username.ToLower().Equals(userPayload.UserName.ToLower()) && x.Password.Equals(userPayload.PassWord));
-        }
-
     }
 }

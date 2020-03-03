@@ -8,7 +8,6 @@ namespace TeamTest.Services.Interfaces
 {
     public interface IUserService
     {
-        public bool IsValidUser(UserPayload user);
         UserDto Authenticate(UserPayload userPayload);
     }
 }

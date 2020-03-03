@@ -41,6 +41,8 @@ namespace TeamTest.WebApp
             services.AddTransient<ISpaRepository<Client>, SpaRepository<Client>>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ISpaRepository<User>, SpaRepository<User>>();
+            services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<ISpaRepository<Category>, SpaRepository<Category>>();
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettingsDto>(appSettingsSection);
