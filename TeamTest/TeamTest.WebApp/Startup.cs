@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Builder;
@@ -20,6 +21,7 @@ using TeamTest.Models.Payloads;
 using TeamTest.Repositories.Repositories;
 using TeamTest.Services.Interfaces;
 using TeamTest.Services.Spa;
+using TeamTest.WebApi;
 
 namespace TeamTest.WebApp
 {
@@ -34,6 +36,7 @@ namespace TeamTest.WebApp
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(c => c.AddProfile<AutoMapping>(), typeof(Startup));
             services.AddTransient<IClientService, ClientService>();
             services.AddTransient<ISpaRepository<Client>, SpaRepository<Client>>();
             services.AddTransient<IUserService, UserService>();

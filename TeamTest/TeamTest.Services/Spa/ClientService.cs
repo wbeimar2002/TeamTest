@@ -2,31 +2,35 @@
 {
     using System;
     using System.Collections.Generic;
+    using AutoMapper;
+    using TeamTest.Models.Dtos;
     using TeamTest.Models.Entities;
+    using TeamTest.Models.Payloads;
     using TeamTest.Repositories.Repositories;
     using TeamTest.Services.Interfaces;
 
     public class ClientService : IClientService
     {
         private readonly ISpaRepository<Client> _clientRepository;
+        private readonly IMapper _mapper;
 
-        public ClientService(ISpaRepository<Client> spaRepository)
+        public ClientService(ISpaRepository<Client> spaRepository, IMapper mapper)
         {
             _clientRepository = spaRepository;
+            _mapper = mapper;
         }
-        public bool Save(Client client)
+        public bool Save(ClientPayload client)
         {
             try
             {
                 var result = false;
                 if (client != null && client.Id != 0)
                 {
-                    Client existsClient = UpdateMap(client);
-                    result = _clientRepository.Update(existsClient);
+                    result = _clientRepository.Update(ClientMap(client,false));
                 }
                 else
                 {
-                    result = _clientRepository.Add(client);
+                    result = _clientRepository.Add(ClientMap(client,true));
                 }
                 return result;
             }
@@ -36,11 +40,11 @@
             }
         }
 
-        public IEnumerable<Client> GetAll()
+        public IEnumerable<ClientDto> GetAll()
         {
             try
             {
-                var result = _clientRepository.List();
+                var result = _mapper.Map<IEnumerable<ClientDto>>(_clientRepository.List());
                 return result;
             }
             catch (Exception ex)
@@ -49,11 +53,11 @@
             }
         }
 
-        public Client GetById(int clientId)
+        public ClientDto GetById(int clientId)
         {
             try
             {
-                var result = _clientRepository.GetById(clientId);
+                var result = _mapper.Map<ClientDto>(_clientRepository.GetById(clientId));
                 return result;
             }
             catch (Exception ex)
@@ -76,15 +80,18 @@
             }
         }
 
-        private Client UpdateMap(Client client)
+        private Client ClientMap(ClientPayload client, bool isCreate)
         {
-            var existclient = _clientRepository.GetById(client.Id);
-            existclient.IdentificationNumber = client.IdentificationNumber;
-            existclient.Name = client.Name;
-            existclient.PhoneNumber = client.PhoneNumber;
-            existclient.Gender = client.Gender;
-            existclient.Email = client.Email;
-            return existclient;
+            Client result = new Client();
+            if(!isCreate)
+                result = _clientRepository.GetById(client.Id);
+
+            result.IdentificationNumber = client.IdentificationNumber;
+            result.Name = client.Name;
+            result.PhoneNumber = client.PhoneNumber;
+            result.Gender = client.Gender;
+            result.Email = client.Email;
+            return result;
         }
     }
 }

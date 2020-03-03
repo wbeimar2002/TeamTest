@@ -63,7 +63,6 @@ namespace TeamTest.Services.Spa
                 Password = user.Password,
                 FirstName = user.FirstName,
                 LastName = user.LastName
-                
             };
         }
 

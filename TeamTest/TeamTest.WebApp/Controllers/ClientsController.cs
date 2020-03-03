@@ -1,12 +1,9 @@
 ﻿namespace TeamTest.WebApi.Controllers
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using TeamTest.Models.Entities;
+    using TeamTest.Models.Dtos;
+    using TeamTest.Models.Payloads;
     using TeamTest.Services.Interfaces;
 
 #if !DEBUG
@@ -23,7 +20,7 @@
         }
 
         [HttpGet]
-        public IEnumerable<Client> Get()
+        public IEnumerable<ClientDto> Get()
         {
             var result = _clientService.GetAll();
 
@@ -31,7 +28,7 @@
         }
 
         [HttpPost]
-        public bool Post([FromBody] Client value)
+        public bool Post([FromBody] ClientPayload value)
         {
             var result = _clientService.Save(value);
 
