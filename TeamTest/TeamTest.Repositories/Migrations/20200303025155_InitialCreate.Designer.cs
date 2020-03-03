@@ -9,7 +9,7 @@ using TeamTest.Repositories;
 namespace TeamTest.Repositories.Migrations
 {
     [DbContext(typeof(SpaContext))]
-    [Migration("20200229155828_InitialCreate")]
+    [Migration("20200303025155_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -159,6 +159,41 @@ namespace TeamTest.Repositories.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductsCategories");
+                });
+
+            modelBuilder.Entity("TeamTest.Models.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FirstName = "Alexander",
+                            LastName = "Gonzalez",
+                            Password = "123",
+                            Username = "walex"
+                        });
                 });
 
             modelBuilder.Entity("TeamTest.Models.Entities.Product", b =>

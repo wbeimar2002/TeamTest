@@ -38,6 +38,8 @@
             modelBuilder.Entity<Brand>().HasData(new Brand { Id = 1, Name = "Nike" });
             modelBuilder.Entity<Brand>().HasData(new Brand { Id = 2, Name = "Adidas" });
             modelBuilder.Entity<Brand>().HasData(new Brand { Id = 3, Name = "Under Armour" });
+
+            modelBuilder.Entity<User>().HasData(new User { Id = 1, FirstName = "Alexander", LastName = "Gonzalez", Username = "walex", Password = "123" });
         }
     }
 }

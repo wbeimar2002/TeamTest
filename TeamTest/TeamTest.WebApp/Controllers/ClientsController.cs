@@ -9,6 +9,9 @@
     using TeamTest.Models.Entities;
     using TeamTest.Services.Interfaces;
 
+#if !DEBUG
+    [Authorize]
+#endif
     [ApiController]
     [Route("[controller]")]
     public class ClientsController : ControllerBase
@@ -19,7 +22,6 @@
             _clientService = clientService;
         }
 
-        [Authorize]
         [HttpGet]
         public IEnumerable<Client> Get()
         {

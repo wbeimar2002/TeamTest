@@ -52,6 +52,22 @@ namespace TeamTest.Repositories.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Username = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Product",
                 columns: table => new
                 {
@@ -131,6 +147,11 @@ namespace TeamTest.Repositories.Migrations
                 columns: new[] { "Id", "Description", "Name" },
                 values: new object[] { 3, null, "Office." });
 
+            migrationBuilder.InsertData(
+                table: "User",
+                columns: new[] { "Id", "FirstName", "LastName", "Password", "Username" },
+                values: new object[] { 1, "Alexander", "Gonzalez", "123", "walex" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Product_BrandId",
                 table: "Product",
@@ -154,6 +175,9 @@ namespace TeamTest.Repositories.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProductsCategories");
+
+            migrationBuilder.DropTable(
+                name: "User");
 
             migrationBuilder.DropTable(
                 name: "Category");

@@ -159,6 +159,41 @@ namespace TeamTest.Repositories.Migrations
                     b.ToTable("ProductsCategories");
                 });
 
+            modelBuilder.Entity("TeamTest.Models.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FirstName = "Alexander",
+                            LastName = "Gonzalez",
+                            Password = "123",
+                            Username = "walex"
+                        });
+                });
+
             modelBuilder.Entity("TeamTest.Models.Entities.Product", b =>
                 {
                     b.HasOne("TeamTest.Models.Entities.Brand", "Brand")
