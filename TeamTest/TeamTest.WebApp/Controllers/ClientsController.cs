@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using TeamTest.Models.Entities;
     using TeamTest.Services.Interfaces;
@@ -18,7 +19,7 @@
             _clientService = clientService;
         }
 
-
+        [Authorize]
         [HttpGet]
         public IEnumerable<Client> Get()
         {
@@ -30,7 +31,7 @@
         [HttpPost]
         public bool Post([FromBody] Client value)
         {
-            var result = _clientService.Create(value);
+            var result = _clientService.Save(value);
 
             return result;
         }

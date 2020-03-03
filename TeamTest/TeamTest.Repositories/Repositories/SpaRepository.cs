@@ -22,6 +22,14 @@
             return changes > 0;
         }
 
+        public bool Update(T entity)
+        {
+            _dbContext.Set<T>().Update(entity);
+            var changes = _dbContext.SaveChanges();
+
+            return changes > 0;
+        }
+
         public bool Delete(T entity)
         {
             _dbContext.Set<T>().Remove(entity);

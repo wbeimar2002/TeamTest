@@ -11,5 +11,6 @@
         bool Add(T entity);
         bool Delete(T entity);
         bool Edit(T entity);
+        public bool Update(T entity);
     }
 }

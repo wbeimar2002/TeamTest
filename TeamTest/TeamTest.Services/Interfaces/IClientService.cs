@@ -8,7 +8,7 @@
     {
         IEnumerable<Client> GetAll();
         Client GetById(int clientId);
-        bool Create(Client client);
+        bool Save(Client client);
         bool Remove(int clientId);
     }
 }

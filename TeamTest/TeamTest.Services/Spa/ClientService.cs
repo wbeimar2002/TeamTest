@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Text;
     using TeamTest.Models.Entities;
     using TeamTest.Repositories.Repositories;
     using TeamTest.Services.Interfaces;
@@ -15,11 +14,20 @@
         {
             _clientRepository = spaRepository;
         }
-        public bool Create(Client client)
+        public bool Save(Client client)
         {
             try
             {
-                var result = _clientRepository.Add(client);
+                var result = false;
+                if (client != null && client.Id != 0)
+                {
+                    Client existsClient = UpdateMap(client);
+                    result = _clientRepository.Update(existsClient);
+                }
+                else
+                {
+                    result = _clientRepository.Add(client);
+                }
                 return result;
             }
             catch (Exception ex)
@@ -66,6 +74,17 @@
             {
                 throw ex;
             }
+        }
+
+        private Client UpdateMap(Client client)
+        {
+            var existclient = _clientRepository.GetById(client.Id);
+            existclient.IdentificationNumber = client.IdentificationNumber;
+            existclient.Name = client.Name;
+            existclient.PhoneNumber = client.PhoneNumber;
+            existclient.Gender = client.Gender;
+            existclient.Email = client.Email;
+            return existclient;
         }
     }
 }
