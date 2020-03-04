@@ -25,7 +25,7 @@ namespace TeamTest.Services.Spa
         {
             try
             {
-                var result = _mapper.Map<IEnumerable<CategoryDto>>(_categoryRepository.List());
+                var result = _mapper.Map<IEnumerable<CategoryDto>>(_categoryRepository.GetAll());
                 return result;
             }
             catch (Exception ex)

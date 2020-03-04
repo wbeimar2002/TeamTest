@@ -44,7 +44,7 @@
         {
             try
             {
-                var result = _mapper.Map<IEnumerable<ClientDto>>(_clientRepository.List());
+                var result = _mapper.Map<IEnumerable<ClientDto>>(_clientRepository.GetAll());
                 return result;
             }
             catch (Exception ex)

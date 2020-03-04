@@ -138,7 +138,7 @@ namespace TeamTest.Repositories.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("TeamTest.Models.Entities.ProductsCategories", b =>
+            modelBuilder.Entity("TeamTest.Models.Entities.ProductCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -156,7 +156,7 @@ namespace TeamTest.Repositories.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductsCategories");
+                    b.ToTable("ProductCategory");
                 });
 
             modelBuilder.Entity("TeamTest.Models.Entities.User", b =>
@@ -203,7 +203,7 @@ namespace TeamTest.Repositories.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TeamTest.Models.Entities.ProductsCategories", b =>
+            modelBuilder.Entity("TeamTest.Models.Entities.ProductCategory", b =>
                 {
                     b.HasOne("TeamTest.Models.Entities.Category", "Category")
                         .WithMany("ProductsCategories")

@@ -43,6 +43,10 @@ namespace TeamTest.WebApp
             services.AddTransient<ISpaRepository<User>, SpaRepository<User>>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<ISpaRepository<Category>, SpaRepository<Category>>();
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<ISpaRepository<Product>, SpaRepository<Product>>();
+            services.AddTransient<ISpaRepository<Brand>, SpaRepository<Brand>>();
+            services.AddTransient<ISpaRepository<ProductCategory>, SpaRepository<ProductCategory>>();
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettingsDto>(appSettingsSection);

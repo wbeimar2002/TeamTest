@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace TeamTest.Models.Entities
 {
-    public class ProductsCategories: EntityBase
+    public class ProductCategory: EntityBase
     {
         public int ProductId { get; set; }
         public Product Product{ get; set; }

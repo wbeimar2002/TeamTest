@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TeamTest.Models.Entities;
 
-namespace TeamTest.Models.Entities
+namespace TeamTest.Models.Payloads
 {
-    public class Product: EntityBase
+    public class ProductPayload
     {
-        public Product()
-        {
-            //ProductCategory = new HashSet<ProductCategory>();
-        }
+        public int Id { get; set; }
         /// <summary>
         /// Product’s name
         /// </summary>
@@ -22,10 +20,7 @@ namespace TeamTest.Models.Entities
         /// Product Brand identifier
         /// </summary>
         public int BrandId { get; set; }
-        /// <summary>
-        /// Product Brand information
-        /// </summary>
-        public Brand Brand { get; set; }
+
         /// <summary>
         /// Image of the product
         /// </summary>
@@ -41,6 +36,7 @@ namespace TeamTest.Models.Entities
         /// <summary>
         /// Product Categories
         /// </summary>
-        public virtual ICollection<ProductCategory> ProductCategory { get; set; }
+        public IEnumerable<int> ProductsCategories { get; set; }
+
     }
 }

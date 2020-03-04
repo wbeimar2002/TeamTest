@@ -59,7 +59,7 @@ namespace TeamTest.Services.Spa
 
         private UserDto GetUser(UserPayload userPayload)
         {
-            var user = _userRepository.List().FirstOrDefault(x => x.Username == userPayload.UserName && x.Password == userPayload.PassWord);
+            var user = _userRepository.GetAll().FirstOrDefault(x => x.Username == userPayload.UserName && x.Password == userPayload.PassWord);
             if (user == null)
                 return null;
 

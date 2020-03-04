@@ -51,9 +51,25 @@
             return _dbContext.Set<T>().Find(id);
         }
 
-        public IEnumerable<T> List()
+        public IEnumerable<T> GetAll()
         {
             return _dbContext.Set<T>().AsEnumerable();
+        }
+
+        public IEnumerable<T> GetAllWithInclude(string table)
+        {
+            return _dbContext.Set<T>().Include(table).AsEnumerable();
+        }
+        public IEnumerable<T> GetAllWithInclude(string table, string table2)
+        {
+            return _dbContext.Set<T>().Include(table).Include(table2).AsEnumerable();
+        }
+        public T AddWithReturn(T entity)
+        {
+            _dbContext.Set<T>().Add(entity);
+            _dbContext.SaveChanges();
+
+            return entity;
         }
     }
 }

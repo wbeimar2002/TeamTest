@@ -92,7 +92,7 @@ namespace TeamTest.Repositories.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductsCategories",
+                name: "ProductCategory",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -102,15 +102,15 @@ namespace TeamTest.Repositories.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductsCategories", x => x.Id);
+                    table.PrimaryKey("PK_ProductCategory", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProductsCategories_Category_CategoryId",
+                        name: "FK_ProductCategory_Category_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Category",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductsCategories_Product_ProductId",
+                        name: "FK_ProductCategory_Product_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Product",
                         principalColumn: "Id",
@@ -158,13 +158,13 @@ namespace TeamTest.Repositories.Migrations
                 column: "BrandId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductsCategories_CategoryId",
-                table: "ProductsCategories",
+                name: "IX_ProductCategory_CategoryId",
+                table: "ProductCategory",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductsCategories_ProductId",
-                table: "ProductsCategories",
+                name: "IX_ProductCategory_ProductId",
+                table: "ProductCategory",
                 column: "ProductId");
         }
 
@@ -174,7 +174,7 @@ namespace TeamTest.Repositories.Migrations
                 name: "Client");
 
             migrationBuilder.DropTable(
-                name: "ProductsCategories");
+                name: "ProductCategory");
 
             migrationBuilder.DropTable(
                 name: "User");

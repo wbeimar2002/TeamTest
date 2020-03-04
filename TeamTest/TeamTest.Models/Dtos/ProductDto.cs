@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TeamTest.Models.Entities;
 
-namespace TeamTest.Models.Entities
+namespace TeamTest.Models.Dtos
 {
-    public class Product: EntityBase
+    public class ProductDto
     {
-        public Product()
-        {
-            //ProductCategory = new HashSet<ProductCategory>();
-        }
+        public int Id { get; set; }
         /// <summary>
         /// Product’s name
         /// </summary>
@@ -25,11 +23,11 @@ namespace TeamTest.Models.Entities
         /// <summary>
         /// Product Brand information
         /// </summary>
-        public Brand Brand { get; set; }
+        public BrandDto Brand { get; set; }
         /// <summary>
         /// Image of the product
         /// </summary>
-        public byte[] Photo { get; set; }
+        public string Photo { get; set; }
         /// <summary>
         /// Product’s price
         /// </summary>
@@ -41,6 +39,6 @@ namespace TeamTest.Models.Entities
         /// <summary>
         /// Product Categories
         /// </summary>
-        public virtual ICollection<ProductCategory> ProductCategory { get; set; }
+        public ICollection<ProductCategoryDto> ProductCategory { get; set; }
     }
 }
