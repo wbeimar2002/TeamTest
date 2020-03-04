@@ -1,14 +1,15 @@
 ﻿namespace TeamTest.WebApi.Controllers
 {
     using System.Collections.Generic;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using TeamTest.Models.Dtos;
     using TeamTest.Models.Payloads;
     using TeamTest.Services.Interfaces;
 
-#if !DEBUG
+//#if !DEBUG
     [Authorize]
-#endif
+//#endif
     [ApiController]
     [Route("[controller]")]
     public class ClientsController : ControllerBase

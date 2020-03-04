@@ -29,34 +29,6 @@
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<ProductCategory>(entity => 
-            //    entity.HasOne(t => t.Product)
-            //    .WithMany(t => t.ProductCategory));
-
-            //modelBuilder.Entity<ProductCategory>(entity =>
-            //    entity.HasOne(t => t.Category)
-            //    .WithMany(t => t.ProductsCategories));
-
-        //    modelBuilder.Entity<ProductCategory>()
-        //.       HasKey(bc => new { bc.ProductId, bc.CategoryId });
-
-        //    modelBuilder.Entity<ProductCategory>()
-        //        .HasOne(bc => bc.Product)
-        //        .WithMany(b => b.ProductCategory)
-        //        .HasForeignKey(bc => bc.ProductId);
-
-        //    modelBuilder.Entity<ProductCategory>()
-        //        .HasOne(bc => bc.Category)
-        //        .WithMany(c => c.ProductsCategories)
-        //        .HasForeignKey(bc => bc.CategoryId);
-
-
-
-
-
-
-
-
             // Seeding Categories information 
             modelBuilder.Entity<Category>().HasData(new Category { Id = 1, Name = "Tech," });
             modelBuilder.Entity<Category>().HasData(new Category { Id = 2, Name = "Services," });

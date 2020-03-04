@@ -6,10 +6,6 @@ namespace TeamTest.Models.Entities
 {
     public class Product: EntityBase
     {
-        public Product()
-        {
-            //ProductCategory = new HashSet<ProductCategory>();
-        }
         /// <summary>
         /// Product’s name
         /// </summary>

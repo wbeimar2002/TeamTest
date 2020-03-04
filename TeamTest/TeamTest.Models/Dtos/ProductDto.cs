@@ -27,7 +27,7 @@ namespace TeamTest.Models.Dtos
         /// <summary>
         /// Image of the product
         /// </summary>
-        public string Photo { get; set; }
+        public byte[] Photo { get; set; }
         /// <summary>
         /// Product’s price
         /// </summary>

@@ -62,6 +62,7 @@ namespace TeamTest.Services.Spa
 
                         _productCategoryRepository.Add(productsCategories);
                     }
+                    result = true;
                 }
                 return result;
             }

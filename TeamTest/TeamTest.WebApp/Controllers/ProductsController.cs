@@ -4,15 +4,16 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using TeamTest.Models.Dtos;
     using TeamTest.Models.Payloads;
     using TeamTest.Services.Interfaces;
 
-#if !DEBUG
+//#if !DEBUG
     [Authorize]
-#endif
+//#endif
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase

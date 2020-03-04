@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TeamTest.Models.Dtos;
@@ -11,9 +12,9 @@ using TeamTest.Services.Spa;
 
 namespace TeamTest.WebApi.Controllers
 {
-#if !DEBUG
+//#if !DEBUG
     [Authorize]
-#endif
+//#endif
     [ApiController]
     [Route("[controller]")]
     public class CategoriesController : ControllerBase
