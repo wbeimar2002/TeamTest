@@ -13,7 +13,7 @@ using TeamTest.Services.Spa;
 namespace TeamTest.WebApi.Controllers
 {
 //#if !DEBUG
-    [Authorize]
+   // [Authorize]
 //#endif
     [ApiController]
     [Route("[controller]")]

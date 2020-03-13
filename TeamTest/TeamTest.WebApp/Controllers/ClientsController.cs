@@ -8,7 +8,7 @@
     using TeamTest.Services.Interfaces;
 
 //#if !DEBUG
-    [Authorize]
+    //[Authorize]
 //#endif
     [ApiController]
     [Route("[controller]")]
